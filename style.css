@@ -1,0 +1,135 @@
+/*----------------------Estilização geral-----------------------*/
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background-color: #e5e5fb;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+/*----------------------Estilização das DIVS---------------------*/
+.tile_row {
+    float: left;
+    width: 100%;
+}
+
+
+/*---------------------Estilização dos SPANs---------------------*/
+.tile {
+    float: left; 
+    width: 100px;
+    height: 100px;
+    display: flex; 
+    border: 2px solid whitesmoke;
+    background-color: #249599;
+    margin: 0.5px;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    position: relative ;
+}
+
+.tile.x, 
+.tile.o{
+  cursor: not-allowed;
+}
+
+
+/*---------------------Estilização da MAIN-----------------------*/
+.board{
+  display: grid;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+}
+
+.board.x .tile:not(.x):not(.o):hover::after, 
+.board.x .tile:not(.x):not(.o):hover::before,
+.board.o .tile:not(.x):not(.o):hover::after,
+.board.o .tile:not(.x):not(.o):hover::before{
+  background: rgba(255, 255, 255, 0.1) !important;}
+
+
+/*--------------------------Criando o "X"-----------------------*/
+.tile.x::before,
+.tile.x::after,
+.board.x .tile:not(.x):not(.o):hover::after, 
+.board.x .tile:not(.x):not(.o):hover::before{ 
+  content:"";
+  height: calc(100px * 0.10);
+  width: calc(100px * 0.9);
+  background: white;
+  position: absolute;
+}
+
+.tile.x::before,
+.board.x .tile:not(.x):not(.o):hover::before{ 
+  transform: rotate(45deg);
+}
+
+.tile.x::after,
+.board.x .tile:not(.x):not(.o):hover::after{
+  transform: rotate(-45deg);
+}
+      
+/*--------------------------Criando o "O"-----------------------*/
+
+.tile.o::before,
+.tile.o::after,
+.board.o .tile:not(.x):not(.o):hover::after, 
+.board.o .tile:not(.x):not(.o):hover::before{
+  content:"";
+  height: calc(100px * 0.9);
+  width: calc(100px * 0.9);
+  background: white;
+  position: absolute;
+  border-radius: 50%;
+}
+/*-------------------Estilização do WIN-------------------*/
+.ganhador-mensagem{
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.95);
+  flex-direction: column;
+}
+
+.ganhador-mensagem-butao{
+  font-size: 2.5rem;
+  background-color: #249599 ;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  margin-top: 16px;
+}
+
+.ganhador-mensagem-butao:hover{
+  color: #249599 ;
+  background-color: #edeeee ;
+}
+
+.ganhador-mensagem-texto{
+  color: white;
+  font-size: 5rem;
+  background: none;
+}
+
+.mostrando-ganhador{
+  display: flex;
+  color: white;
+  font-size: 5rem;
+}
